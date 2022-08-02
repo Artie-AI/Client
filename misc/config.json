@@ -1,0 +1,14 @@
+{
+    "bot_token": "OTEwMzE5MzM5NzEyOTUwMjgy.GENKqL.6D0WKhDXRCO_094nQdg_SqNhuVrpYyZPaMGtDw",
+    "status": {
+        "state": "idle",
+        "type": "PLAYING",
+        "name": "Chat simulator"
+    },
+    "chat": {
+        "url": "http://api.brainshop.ai/get",
+        "brainID": "168338",
+        "key": "jQsvuNgqUnJcl24r",
+        "channel": "toxic-ai"
+    }
+}
