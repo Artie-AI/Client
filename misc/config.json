@@ -3,7 +3,7 @@
     "status": {
         "state": "idle",
         "type": "PLAYING",
-        "name": "Chat simulator"
+        "name": "Chatting with peeps!"
     },
     "chat": {
         "url": "http://api.brainshop.ai/get",
