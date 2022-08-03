@@ -1,5 +1,5 @@
 {
-    "bot_token": "OTA5OTYzNTg0NTgxMzA0Mzcy.GN9Nke.Su7nTXLGRq4SyIRwzVebGCb5uXVc-MXEmimNK0",
+    "bot_token": "OTEwMzE5MzM5NzEyOTUwMjgy.GENKqL.6D0WKhDXRCO_094nQdg_SqNhuVrpYyZPaMGtDw",
     "status": {
         "state": "idle",
         "type": "PLAYING",
@@ -9,6 +9,6 @@
         "url": "http://api.brainshop.ai/get",
         "brainID": "168338",
         "key": "jQsvuNgqUnJcl24r",
-        "channel": "toxic-ai"
+        "channel": "arties-chat"
     }
 }
