@@ -45,7 +45,7 @@ const handleTalk = async (msg) => {
             msg.reply({
                 content: reply.cnt,
                 allowedMentions: {
-                    repliedUser: false
+                    repliedUser: true
                 }
             })
         }
