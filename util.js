@@ -14,10 +14,21 @@ const urlOptions = {
     msg: null
 };
 const handleStatus = (client, status) => {
+    let statuses = [
+        'Chatting with peeps',
+        'with https://artie.live',
+        '@Mention for help/information'
+    ]
+
     client.user.setStatus(status.state);
-    client.user.setActivity(status.name, {
-        type: status.type
-    });
+
+    setInterval(function() {
+        let status = statuses[Math.floor(Math.random() * statuses.length)];
+
+        client.user.setActivity(status, {
+            type: 'PLAYING'
+        })
+    }, 10000)
 };
 
 const handleTalk = async (msg) => {

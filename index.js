@@ -29,6 +29,11 @@ client.on('uncaughtException', (err) => {
 client.on('messageCreate', (msg) => {
     if (msg.author.bot) return;
     if (msg.guild) {
+
+        if (msg.content.startsWith(`<@${msg.client.user.id}>`) || msg.content.startsWith(`<@!${msg.client.user.id}>`)) {
+            return msg.channel.send('Hey there, are you having issues getting me to respond? Please make sure you have created a channel named `arties-chat` and given me the necessary permissions.')
+        }
+
         client.util.handleTalk(msg);
     }
 });
