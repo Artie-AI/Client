@@ -15,9 +15,9 @@ const loadEvents = async function (client) {
             const event = require(`../listeners/${folder}/${file}`);
             
             if (event.name) {
-                client.logger.sendLogs(`Client Event: ${file} of Category: ${folder} has been Loaded Successfully!`, 'event');
+                client.logger.info(`Client Event: ${file} of Category: ${folder} has been Loaded Successfully!`, 'event');
             } else {
-                client.logger.sendLogs(`Client Event: ${file} of Category: ${folder} is missing a Name or Name is not a string.`, 'error');
+                client.logger.info(`Client Event: ${file} of Category: ${folder} is missing a Name or Name is not a string.`, 'error');
                 continue;
             }
             
@@ -48,18 +48,18 @@ const loadSlashCommands = async function (client) {
             if (command.name) {
                 client.slash.set(command.name, command);
                 slash.push(command)
-                client.logger.sendLogs(`Command: ${file} of Category: ${folder} has been Loaded Successfully!`, 'cmd')
+                client.logger.info(`Command: ${file} of Category: ${folder} has been Loaded Successfully!`, 'cmd')
             } else {
-                return client.logger.sendLogs(`Command: ${file} of Category: ${folder} is missing a Name or Name is not a string.`, 'error')
+                return client.logger.info(`Command: ${file} of Category: ${folder} is missing a Name or Name is not a string.`, 'error')
             }
         }
     }
 
     client.on("ready", async() => {
         await client.application.commands.set(slash).then(() => {
-            client.logger.sendLogs('Slash Commands have been registered with the Discord API', 'event')
+            client.logger.info('Slash Commands have been registered with the Discord API', 'event')
         }).catch((e) => {
-            client.logger.sendLogs(`Failed to register Slash Commands: ${e.stack}`, 'error')
+            client.logger.error(`Failed to register Slash Commands: ${e.stack}`, 'error')
         })
     })
 }

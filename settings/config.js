@@ -3,6 +3,7 @@ module.exports = {
     token: `${process.env.DEVTOKEN}`, // Dev Token
     //logs: '1004704810811002910', // Main Logs
     logs: '1004710162277355550', // Dev Logs
+    mongo: `${process.env.MONGOOSE}`,
     ArtieAPI: {
         url: `${process.env.API_URL}`,
         key: `${process.env.API_KEY}`,

@@ -1,8 +1,13 @@
+const { DatabaseClient } = require('@Database/client');
+const config = require('@Settings/config');
+
 module.exports = {
     name: 'ready',
     once: true,
 
     async execute(client) {
+
+        await DatabaseClient({ connectionURL: config.mongo });
 
         await client.utils.handleStatus(client);
 
@@ -19,6 +24,6 @@ module.exports = {
 
         await client.channels.cache.get(client.config.logs).send({ embeds: [embed] });
 
-        return client.logger.sendLogs(`${client.user.username} is online and ready!`);         
+        return client.logger.info(`${client.user.username} is online and ready!`);         
     }
 }

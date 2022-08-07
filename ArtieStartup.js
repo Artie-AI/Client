@@ -3,7 +3,7 @@ require('dotenv').config()
 
 const { Client, Collection, Intents } = require("discord.js");
 
-const Logger = require("@Modules/logger");
+const Logger = require('artie-logger');
 const system = require("@Handlers/client");
 const config = require("@Settings/config");
 const Discord = require("discord.js");

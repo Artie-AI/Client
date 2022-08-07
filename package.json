@@ -22,10 +22,12 @@
       "node-fetch": "^2.6.1"
     },
     "devDependencies": {
-      "nodemon": "^2.0.15"
+      "nodemon": "^2.0.15",
+      "artie-logger": "^0.0.1"
     },
     "_moduleAliases": {
       "@Root": ".",
+      "@Database": "./database",
       "@Handlers": "./handlers",
       "@Modules": "./modules",
       "@Settings": "./settings"

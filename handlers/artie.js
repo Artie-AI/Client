@@ -70,7 +70,7 @@ const handleChat = async (msg) => {
             }
         })
 
-        return client.logger.sendLogs(`Error with chat response: ${e.stack}`, 'error');
+        return client.logger.info(`Error with chat response: ${e.stack}`, 'error');
     }
 }
 
@@ -107,7 +107,7 @@ const handleDirectMessage = async (msg) => {
             }
         })
 
-        return client.logger.sendLogs(`Error with chat response: ${e.stack}`, 'error');
+        return client.logger.error(`Error with chat response: ${e.stack}`, 'error');
     }
 }
 
