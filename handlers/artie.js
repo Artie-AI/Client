@@ -1,6 +1,7 @@
 const request = require("node-fetch");
 const { URL, URLSearchParams } = require("url");
 const { ArtieAPI } = require("@Settings/config");
+const GuildDB = require('@Database/models/guilds');
 
 const baseURL = new URL(ArtieAPI.url);
 
@@ -37,8 +38,17 @@ const handleChat = async (msg) => {
 
     msg.content = msg.content.replace(/^<@!?[0-9]{1,20}> ?/i, '');
 
-    //if (msg.content.length < 2 || (msg.channel.name !== 'arties-chat')) return;
-    if (msg.content.length < 2 || (msg.channel.name !== 'devs-chat')) return;
+    let g = await GuildDB.findOne({ guildID: msg.guild.id });
+
+    if (!g) g = await GuildDB.create({
+        guildID: msg.guild.id,
+        premium: false,
+        banned: false,
+        channel: 'arties-chat',
+        mentionOnly: false
+    });
+    
+    if (msg.content.length < 2 || (msg.channel.name !== g.channel)) return;
 
     msg.channel.sendTyping();
 
@@ -91,7 +101,7 @@ const handleDirectMessage = async (msg) => {
             
             reply = await reply.json();
 
-            msg.channel.send({
+            msg.reply({
                 content: reply.cnt,
                 allowedMentions: {
                     repliedUser: true

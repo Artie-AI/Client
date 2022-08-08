@@ -2,8 +2,7 @@ module.exports = {
     name: 'invite',
     category: 'Info',
     description: 'Get a link to invite Artie!',
-    usage: '/invite',
-    userPerms: ['BOT_ADMIN'],
+    userPerms: ['none'],
     basePerms: ['none'],
 
     run: async(client, interaction) => {
