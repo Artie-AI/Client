@@ -1,6 +1,8 @@
 # Artie AI
 Artificial Intelligence for the future of Discord Chat Bots!
 
+> Not for self hosting. This repo is missing a variety of requirements!
+
 ---
 
 ## Features
