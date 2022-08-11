@@ -64,17 +64,29 @@ const handleChat = async (msg) => {
         if (reply) {
             reply = await reply.json();
 
+            console.log(reply.cnt)
+
             msg.reply({
                 content: reply.cnt,
                 allowedMentions: {
                     repliedUser: true
                 }
+            }).catch(async (err) => {
+
+                await client.logger.error(`Error calculating response: ${err.stack}`)
+
+                return msg.reply({
+                    content: `Error calculating a response.`,
+                    allowedMentions: {
+                        repliedUser: true
+                    }
+                })
             })
         }
     } catch (e) {
 
         await msg.reply({
-            content: `Error calculating a response. Please report this to my dev: ${e.message}`,
+            content: `Error calculating a response. Please report this to my devs`,
             allowedMentions: {
                 repliedUser: true
             }
