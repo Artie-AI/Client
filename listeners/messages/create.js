@@ -30,6 +30,8 @@ module.exports = {
                 banned: false
             })
 
+            if (g.banned) return;
+
             if (user_check.banned) {
                 if (message.content.startsWith(`<@${message.client.user.id}>`) || message.content.startsWith(`<@!${message.client.user.id}>`)) {
                     return message.author.send({
@@ -57,6 +59,8 @@ module.exports = {
         else if (message.guild === null ) {
 
             let user_check = await UserModel.findOne({ userID: message.author.id });
+
+            if (user_check && !user_check.premium) return;
 
             if (user_check && user_check.banned) {
                 return message.reply({

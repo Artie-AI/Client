@@ -43,15 +43,15 @@ module.exports = {
 
         } catch (e) {
 
-            let embed = new client.Artie.MessageEmbed()
-              .setTitle('Eval Failed')
-              .setColor(client.color)
-              .setThumbnail(client.logo)
-              .setDescription(`Error: ${e.message}`)
-              .setTimestamp()
-              .setFooter({ text: `${client.credits}`, iconURL: `${client.logo}`})
-
-              interaction.reply({ embeds: [embed], ephemeral: true })
+            interaction.reply({ embeds: [
+                new client.Artie.MessageEmbed()
+                 .setTitle('Eval Failed')
+                 .setColor(client.color)
+                 .setThumbnail(client.logo)
+                 .setDescription(`Error: ${e.message}`)
+                 .setTimestamp()
+                 .setFooter({ text: `${client.credits}`, iconURL: `${client.logo}`})
+            ], ephemeral: true })
 
             return client.logger.sendLogs(`Error: ${e.stack}`, 'error');
         }
@@ -88,15 +88,15 @@ module.exports = {
             })
         }
 
-        let embed = new client.Artie.MessageEmbed()
-         .setTitle('Eval Results')
-         .setColor(client.color)
-         .setThumbnail(client.logo)
-         .addField('Input', `${interaction.options.getString("eval")}`, true)
-         .addField('Output', `${evaled}`, true)
-         .setTimestamp()
-         .setFooter({ text: `${client.credits}`, iconURL: `${client.logo}`})
-
-         return interaction.reply({ embeds: [embed] });
+         return interaction.reply({ embeds: [
+            new client.Artie.MessageEmbed()
+             .setTitle('Eval Results')
+             .setColor(client.color)
+             .setThumbnail(client.logo)
+             .addField('Input', `${interaction.options.getString("eval")}`, true)
+             .addField('Output', `${evaled}`, true)
+             .setTimestamp()
+             .setFooter({ text: `${client.credits}`, iconURL: `${client.logo}`})
+         ]});
    }
 }

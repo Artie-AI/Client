@@ -31,17 +31,32 @@ module.exports = {
 
             let owner = await guild.fetchOwner();
 
-             embed.setTitle('[GUILD_EVENT]: Joined new guild')
-             embed.setColor(client.color)
-             embed.setThumbnail(client.logo)
-             embed.setDescription('I have been added to a new guild')
-             embed.addField('Guild ID', `${guild.id}`, true)
-             embed.addField('Guild Name', `${guild.name}`, true)
-             embed.addField('Guild Owner', `${owner.username}`)
-             embed.setTimestamp()
-             embed.setFooter({ text: `${client.credits}`, iconURL: `${client.logo}`})
-
-             return client.channels.cache.get(client.config.logs).send({ embeds: [embed] });
+             return client.channels.cache.get(client.config.logs).send({ embeds: [
+                new client.Artie.MessageEmbed()
+                 .setTitle('[GUILD_EVENT]: Joined new guild')
+                 .setColor(client.color)
+                 .setThumbnail(client.logo)
+                 .setDescription('I have been added to a new guild')
+                 .addFields(
+                    {
+                        name: 'Guild ID',
+                        value: `${guild.id}`,
+                        inline: true
+                    },
+                    {
+                        name: 'Guild Name',
+                        value: `${guild.name}`,
+                        inline: true
+                    },
+                    {
+                        name: 'Guild Owner',
+                        value: `${owner.user.tag}`,
+                        inline: true
+                    }
+                 )
+                 .setTimestamp()
+                 .setFooter({ text: `${client.credits}`, iconURL: `${client.logo}`})
+             ]});
         }
     }
 }

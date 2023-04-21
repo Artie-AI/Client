@@ -9,14 +9,14 @@ module.exports = {
 
         const inv = 'https://discord.com/api/oauth2/authorize?client_id=910319339712950282&permissions=466108153169&scope=bot%20applications.commands'
 
-        const embed = new client.Artie.MessageEmbed()
-         .setTitle('Invite Artie')
-         .setColor(client.color)
-         .setThumbnail(client.logo)
-         .setDescription(`You can invite me using [This Link](${inv})`)
-         .setTimestamp()
-         .setFooter({ text: `${client.credits}`, iconURL: `${client.logo}`})
-
-         await interaction.reply({ embeds: [embed] });
+         await interaction.reply({ embeds: [
+            new client.Artie.MessageEmbed()
+             .setTitle('Invite Artie')
+             .setColor(client.color)
+             .setThumbnail(client.logo)
+             .setDescription(`You can invite me using [This Link](${inv})`)
+             .setTimestamp()
+             .setFooter({ text: `${client.credits}`, iconURL: `${client.logo}`})
+         ]});
     }
 }

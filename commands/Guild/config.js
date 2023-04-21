@@ -110,6 +110,7 @@ module.exports = {
             let chan = await interaction.guild.channels.cache.find(c => c.name === guild.channel);
             let ment = await guild.mentionOnly ? 'Only responds when mentioned in the set channel' : 'Responds to all messages in the set channel';
             let prem = await guild.premium ? 'Guild has premium features' : 'Guild does not have premium features';
+            let bans = await guild.banned ? 'Guild is banned from using artie (interactions will work ai features will not)' : 'Guild is free to use artie';
 
             return interaction.reply({ embeds: [
                 new client.Artie.MessageEmbed()
@@ -121,16 +122,21 @@ module.exports = {
                     {
                         name: 'Chat Channel',
                         value: `${chan}`,
-                        inline: true
+                        inline: false
                     },
                     {
                         name: 'Mention Only',
                         value: `${ment}`,
-                        inline: true
+                        inline: false
                     },
                     {
                         name: 'Premium',
                         value: `${prem}`,
+                        inline: false
+                    },
+                    {
+                        name: 'Blacklist',
+                        value: `${bans}`,
                         inline: true
                     }
                  )

@@ -1,4 +1,5 @@
 const { DatabaseClient } = require('@Database/client');
+//const { InfinityAutoPoster } = require('@infinitybots/autoposter');
 const config = require('@Settings/config');
 
 module.exports = {
@@ -9,34 +10,45 @@ module.exports = {
 
         await DatabaseClient({ connectionURL: config.mongo });
 
+        /**const poster = InfinityAutoPoster('', client);
+
+        poster.on('posted', (stats) => {
+            console.log('Stats posted to Infinity Bot List!')
+            console.log(stats);
+        });
+
+        poster.on('error', (err) => {
+            console.log(`Error posting stats to Infinity Bot List: ${err}`);
+        })*/
+
         await client.utils.handleStatus(client);
 
-        let embed = new client.Artie.MessageEmbed()
-         .setTitle('Startup Logs')
-         .setColor(client.color)
-         .setThumbnail(client.logo)
-         .setDescription('Startup successful')
-         .addFields(
-            {
-                name: 'Guilds',
-                value: `${client.guilds.cache.size}`,
-                inline: true
-            },
-            {
-                name: 'Channels',
-                value: `${client.channels.cache.size}`,
-                inline: true
-            },
-            {
-                name: 'Users',
-                value: `${client.users.cache.size}`,
-                inline: true
-            }
-         )
-         .setTimestamp()
-         .setFooter({ text: `${client.credits}`, iconURL: `${client.logo}`})
-
-        await client.channels.cache.get(client.config.logs).send({ embeds: [embed] });
+        await client.channels.cache.get(client.config.logs).send({ embeds: [
+            new client.Artie.MessageEmbed()
+             .setTitle('Startup Logs')
+             .setColor(client.color)
+             .setThumbnail(client.logo)
+             .setDescription('Startup successful')
+             .addFields(
+                {
+                    name: 'Guilds',
+                    value: `${client.guilds.cache.size}`,
+                    inline: true
+                }, 
+                {
+                    name: 'Channels',
+                    value: `${client.channels.cache.size}`,
+                    inline: true
+                },
+                {
+                    name: 'Users',
+                    value: `${client.users.cache.size}`,
+                    inline: true
+                }
+             )
+             .setTimestamp()
+             .setFooter({ text: `${client.credits}`, iconURL: `${client.logo}`})
+        ]});
 
         return client.logger.info(`${client.user.username} is online and ready!`);         
     }
