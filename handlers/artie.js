@@ -18,7 +18,7 @@ const handleStatus = (client, status) => {
         'Chatting with peeps',
         'Artificial Intelligence',
         'Slash Command Usage',
-        '@Mention or /help'
+        '/help'
     ]
 
     client.user.setStatus('idle');
