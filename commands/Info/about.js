@@ -69,7 +69,7 @@ module.exports = {
                 new client.Artie.MessageButton()
                  .setLabel('Twitter')
                  .setStyle('LINK')
-                 .setURL('https://twitter.com/ArtieTheAI'),
+                 .setURL('https://twitter.com/ArtieAIBot'),
                 new client.Artie.MessageButton()
                  .setLabel('GitHub')
                  .setStyle('LINK')
