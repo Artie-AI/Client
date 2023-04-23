@@ -1,5 +1,6 @@
 const { DatabaseClient } = require('@Database/client');
 //const { InfinityAutoPoster } = require('@infinitybots/autoposter');
+const ClientStats = require('@Database/models/client');
 const config = require('@Settings/config');
 
 module.exports = {
@@ -9,6 +10,11 @@ module.exports = {
     async execute(client) {
 
         await DatabaseClient({ connectionURL: config.mongo });
+        await ClientStats.create({
+                guilds: client.guilds.cache.size,
+                channels: client.channels.cache.size,
+                users: client.users.cache.size,
+        });
 
         /**const poster = InfinityAutoPoster('', client);
 
